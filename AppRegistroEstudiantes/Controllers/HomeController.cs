@@ -23,10 +23,9 @@ namespace AppRegistroEstudiantes.Controllers
                 db.Registro.ToList().Count(),
                 db.Alumno.ToList().Count(),
             };
-            var ultimosAlumnos = db.Alumno.Include(a => a.Madre).Include(a => a.Padre).Take(5).ToList();
+            var ultimosAlumnos = db.Alumno.Include(a => a.Madre).Include(a => a.Padre).OrderByDescending(s => s.Id).Take(5).ToList();
             Response.Registros = Registros;
             Response.Alumnos = ultimosAlumnos;
-            //return View(alumnos.ToList());
 
             return View(Response);
         }

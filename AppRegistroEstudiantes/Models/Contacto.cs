@@ -16,8 +16,7 @@ namespace AppRegistroEstudiantes.Models
         [Required(ErrorMessage = "El nombre es Requerido")]
         [StringLength(30)]
         public string Nombre { get; set; }
-
-        //[DataType(DataType.PhoneNumber, ErrorMessage = "Formato inválido")]
+        
         [StringLength(100)]
         public string Telefono { get; set; }
 

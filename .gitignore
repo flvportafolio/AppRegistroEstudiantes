@@ -361,3 +361,8 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# ignore Images 
+#AppRegistroEstudiantes/Content/Images/*
+# excepto ProfileTest.png
+#!AppRegistroEstudiantes/Content/Images/ProfileTest.png
