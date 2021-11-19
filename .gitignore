@@ -363,6 +363,6 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # ignore Images 
-#AppRegistroEstudiantes/Content/Images/*
+AppRegistroEstudiantes/Content/Images/*
 # excepto ProfileTest.png
-#!AppRegistroEstudiantes/Content/Images/ProfileTest.png
+!AppRegistroEstudiantes/Content/Images/ProfileTest.png
