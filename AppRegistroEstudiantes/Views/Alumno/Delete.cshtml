@@ -1,0 +1,45 @@
+﻿@model AppRegistroEstudiantes.Models.Alumno
+
+@{
+    ViewBag.Title = "Alumno - Eliminar";
+}
+
+<div>
+    <h4>¿Estas seguro que quieres eliminar el Alumno con Id @Model.Id?</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">Nombre Completo</label>
+                <div>
+                    @Html.DisplayFor(model => model.NombreCompleto)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.CI)</label>
+                <div>
+                    @Html.DisplayFor(model => model.CI)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Procedencia)</label>
+                <div>
+                  @Html.DisplayNameFor(model => model.Procedencia)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Volver Atrás", "Index") |
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+    }
+</div>

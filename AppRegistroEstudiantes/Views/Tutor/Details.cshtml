@@ -1,0 +1,86 @@
+﻿@model AppRegistroEstudiantes.Models.Tutor
+
+@{
+    ViewBag.Title = "Tutor - Detalles";
+}
+
+
+<div>
+    <h4>Tutor Id: @Model.Id</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Nombre)</label>
+                <div>@Html.DisplayFor(model => model.Nombre)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.ApellidoPaterno)</label>
+                <div>@Html.DisplayFor(model => model.ApellidoPaterno)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.ApellidoMaterno)</label>
+                <div>@Html.DisplayFor(model => model.ApellidoMaterno)</div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Genero)</label>
+                <div>@Html.DisplayFor(model => model.Genero)</div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.CI)</label>
+                <div>@Html.DisplayFor(model => model.CI)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Ocupacion)</label>
+                <div>@Html.DisplayFor(model => model.Ocupacion)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.LugarNacimiento)</label>
+                <div>@Html.DisplayFor(model => model.LugarNacimiento)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.FechaNacimiento)</label>
+                <div>@Html.DisplayFor(model => model.FechaNacimiento)</div>
+            </div>
+        </div>
+        
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Zona)</label>
+                <div>@Html.DisplayFor(model => model.Zona)</div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Telefono)</label>
+                <div>@Html.DisplayFor(model => model.Telefono)</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Direccion)</label>
+                <div>@Html.DisplayFor(model => model.Direccion)</div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Volver Atrás", "Index") |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+</p>

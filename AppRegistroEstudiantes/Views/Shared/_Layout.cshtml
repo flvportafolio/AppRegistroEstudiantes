@@ -1,0 +1,141 @@
+﻿@{
+    String isRouteHome = ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "";
+    String isRouteCurso = ViewContext.RouteData.Values["Controller"].ToString() == "Curso" ? "active" : "";
+    String isRouteTutor = ViewContext.RouteData.Values["Controller"].ToString() == "Tutor" ? "active" : "";
+    String isRouteAlumno = ViewContext.RouteData.Values["Controller"].ToString() == "Alumno" ? "active" : "";
+    String isRouteRegistro = ViewContext.RouteData.Values["Controller"].ToString() == "Registro" ? "active" : "";
+    String isRouteContacto = ViewContext.RouteData.Values["action"].ToString() == "Contact" ? "active" : "";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-expand-md navbar-dark bg-dark">
+        @Html.ActionLink("Colegio La Salle", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navprincipal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navprincipal">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item @isRouteHome">
+                    @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @isRouteCurso">
+                    @Html.ActionLink("Cursos", "Index", "Curso", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @isRouteTutor">
+                    @Html.ActionLink("Tutores", "Index", "Tutor", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @isRouteAlumno">
+                    @Html.ActionLink("Alumnos", "Index", "Alumno", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @isRouteRegistro">
+                    @Html.ActionLink("Registros", "Index", "Registro", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @isRouteContacto">
+                    @Html.ActionLink("Contacto", "Contact", "Home", null, new { @class = "nav-link" })
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container body-content">
+        <main class="pb-5 bg-white pt-4 px-2">
+            @RenderBody()
+        </main>
+        <footer>
+            <div class="row mx-0 pt-1 footer-text">
+                <div class="col-md-4">
+                    <h5 class="col-md-12">Enlaces Frecuentes</h5>
+                    <hr class="hr-footer">
+                    <ul>
+                        <li class="col-md-12">
+                            <a href="@Url.Action("Index", "Home")" class="text-light">Inicio</a>
+                        </li>
+                        <li class="col-md-12">
+                            <a href="@Url.Action("About", "Home")" class="text-light">Acerca de</a>
+                        </li>
+                        <li class="col-md-12">
+                            <a href="@Url.Action("Contact", "Home")" class="text-light">Contacto</a>
+                        </li>
+                    </ul>
+                    <div class="col-md-12 text-center">
+                        <img src="https://www.colegioslasalle.edu.mx/images/la-salle-logo.png"/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="col-md-12">Horario de Atención</h5>
+                    <hr class="hr-footer">
+                    <ul>
+                        <li class="col-md-12">
+                            Lunes a Viernes de 08:00 a 18:00
+                        </li>
+                        <li class="col-md-12">
+                            Sabados de 08:00 - 15:00
+                        </li>
+                        <li class="col-md-12">
+                            Domingos de 08:00 - 12:00
+                        </li>
+                    </ul>
+                    <h5 class="col-md-12">Contacto</h5>
+                    <hr class="hr-footer">
+                    <div class="col-md-12 pb-2">
+                        <i class="fa fa-whatsapp" aria-hidden="true"></i>
+                        <a class="pl-2 text-light" href="https://wa.me/59176543210">(+591) 76543210</a>
+                    </div>
+                    <div class="col-md-12 pb-2">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <a class="pl-2 text-light" href="mailto:lasalle@example.com">lasalle@example.com</a>
+                    </div>
+                    <div class="col-md-12 pb-2">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <span class="pl-2 text-justify">
+                            Av. Ovidio Barbery Justiniano (radial 26)
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="col-md-12">Mapa</h5>
+                    <hr class="hr-footer">
+                    <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1129.5828940845831!2d-63.18580718808963!3d-17.770591229558796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e7e47107048d%3A0xcd07cb73a5180680!2sColegio%20La%20Salle!5e0!3m2!1ses-419!2sbo!4v1637259630295!5m2!1ses-419!2sbo"
+                            height="250"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                        ></iframe>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center pb-3">
+                    <a target="_blank" href="https://www.facebook.com/" class="text-white px-2 text-decoration-none">
+                        <i class="fa fa-lg fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a target="_blank" href="https://twitter.com/" class="text-white px-2 text-decoration-none">
+                        <i class="fa fa-lg fa-twitter" aria-hidden="true"></i>
+                    </a>
+                    <a target="_blank" href="https://www.instagram.com/" class="text-white text-decoration-none">
+                        <i class="fa fa-lg fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="col-md-12">
+                    <p class="text-center text-white">
+                        Copyright &copy; @DateTime.Now.Year - Colegio La Salle
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

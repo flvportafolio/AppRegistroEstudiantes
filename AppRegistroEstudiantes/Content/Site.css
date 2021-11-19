@@ -1,0 +1,36 @@
+﻿body {
+    background: #edf3f7;
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+footer {
+    background: #444444;
+    color: #fff   
+}
+
+.footer-text {
+    font-size: 15px;
+}
+
+.hr-footer {
+    border: 1px solid #0791e6;
+    width: 80%;
+    margin-top: 0px;
+    text-align: left;
+    margin-left: 0
+}
+
+.carouselCustomHeight {
+    height: 450px;
+}

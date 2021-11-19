@@ -1,0 +1,78 @@
+﻿@model AppRegistroEstudiantes.Models.Registro
+
+@{
+    ViewBag.Title = "Registro - Detalles";
+}
+
+<div>
+    <h4>Registro Id: @Model.Id</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Alumno.NombreCompleto)</label>
+                <div>@Html.DisplayFor(model => model.Alumno.NombreCompleto)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Curso)</label>
+                <div>@Html.DisplayFor(model => model.Curso.Nombre)</div>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Beca)</label>
+                <div>@Html.DisplayFor(model => model.Beca)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.FechaInscripcion)</label>
+                <div>@Html.DisplayFor(model => model.FechaInscripcion)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Observacion1)</label>
+                <div>@Html.DisplayFor(model => model.Observacion1)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Observacion2)</label>
+                <div>@Html.DisplayFor(model => model.Observacion2)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.EsTraspaso)</label>
+                <div>@(Model.EsTraspaso? "Si": "No")</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.EsBecado)</label>
+                <div>@(Model.EsBecado ? "Si": "No")</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.EsRepitente)</label>
+                <div>@(Model.EsRepitente ? "Si": "No")</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Matricula)</label>
+                <div>@Html.DisplayFor(model => model.Matricula)</div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Volver Atrás", "Index") |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+</p>

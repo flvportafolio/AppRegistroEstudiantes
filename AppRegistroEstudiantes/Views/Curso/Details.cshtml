@@ -1,0 +1,28 @@
+﻿@model AppRegistroEstudiantes.Models.Curso
+
+@{
+    ViewBag.Title = "Curso - Detalles";
+}
+
+<div>
+    <h4>Curso Id: @Model.Id</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Nombre)</label>
+                <div>@Html.DisplayFor(model => model.Nombre)</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Descripcion)</label>
+                <div>@Html.DisplayFor(model => model.Descripcion)</div>
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Volver Atrás", "Index") |
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+    </p>
+</div>

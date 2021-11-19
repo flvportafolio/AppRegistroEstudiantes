@@ -1,0 +1,107 @@
+﻿@model AppRegistroEstudiantes.Models.Registro
+
+@{
+    ViewBag.Title = "Registro - Nuevo";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" id="context">
+        <h4>{{title}}</h4>
+        <hr />
+        <div class="card">
+            <div class="card-header">
+                @Html.ActionLink("Volver Atrás", "Index", "Registro", null, new { @class = "btn btn-secondary" })
+                <input type="submit" value="Guardar" class="btn btn-primary"/>
+            </div>
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(model => model.AlumnoID, "Alumno", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("AlumnoID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AlumnoID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.CursoID, "Curso", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("CursoID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CursoID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.FechaInscripcion, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.FechaInscripcion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FechaInscripcion, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.Matricula, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Matricula, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Matricula, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.Beca, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Beca, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "0.01", @Value = "0.00" } })
+                        @Html.ValidationMessageFor(model => model.Beca, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(model => model.Observacion1, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Observacion1, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Observacion1, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        @Html.LabelFor(model => model.Observacion2, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Observacion2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Observacion2, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-1 text-center">
+                        @Html.LabelFor(model => model.EsTraspaso, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.EsTraspaso)
+                        @Html.ValidationMessageFor(model => model.EsTraspaso, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-1 text-center">
+                        @Html.LabelFor(model => model.EsBecado, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.EsBecado, new { htmlAttributes = new { @onclick = "switchDisableInputBeca()" } })
+                        @Html.ValidationMessageFor(model => model.EsBecado, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-1 text-center">
+                        @Html.LabelFor(model => model.EsRepitente, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.EsRepitente)
+                        @Html.ValidationMessageFor(model => model.EsRepitente, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-1 text-center">
+                        <div>
+                            @Html.CheckBox("Estado", true, new { @class = "check-box d-none" })
+                            @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+            new Vue({
+                el: '#context',
+                data: {
+                    title: 'Crear Nuevo Registro',
+                },
+            })
+            let checkbox = document.getElementById("EsBecado");
+            document.getElementById("Beca").disabled = !checkbox.checked;
+            function switchDisableInputBeca() {
+                if (checkbox.checked) {
+                    document.getElementById("Beca").disabled = !checkbox.checked;
+                } else {
+                    document.getElementById("Beca").disabled = !checkbox.checked;
+                    document.getElementById("Beca").value = "0.00";
+                }
+
+            }
+    </script>
+}

@@ -1,0 +1,53 @@
+﻿@model AppRegistroEstudiantes.Models.Registro
+
+@{
+    ViewBag.Title = "Registro - Eliminar";
+}
+
+<div>
+    <h4>¿Estas seguro que quieres eliminar el Registro con Id @Model.Id?</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">Alumno</label>
+                <div>
+                    @Html.DisplayFor(model => model.Alumno.NombreCompleto)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Curso)</label>
+                <div>
+                    @Html.DisplayFor(model => model.Curso.Nombre)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Matricula)</label>
+                <div>
+                    @Html.DisplayFor(model => model.Matricula)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.FechaInscripcion)</label>
+                <div>
+                    @Html.DisplayFor(model => model.FechaInscripcion)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Volver Atrás", "Index") |
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+    }
+</div>
