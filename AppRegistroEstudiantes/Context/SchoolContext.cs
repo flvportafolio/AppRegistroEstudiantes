@@ -37,5 +37,6 @@ namespace PracticaWeb1.Context
         public DbSet<Registro> Registro { get; set; }
 
         public DbSet<Contacto> Contacto { get; set; }
+        public DbSet<Horario> Horario { get; set; }
     }
 }

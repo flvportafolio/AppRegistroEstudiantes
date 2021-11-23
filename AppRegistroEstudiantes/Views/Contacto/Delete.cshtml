@@ -1,64 +1,53 @@
 ﻿@model AppRegistroEstudiantes.Models.Contacto
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Contacto - Eliminar";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Contacto</h4>
+    <h4>¿Estas seguro que quieres eliminar el Contacto con Id @Model.Id?</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Correo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Correo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Asunto)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Asunto)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mensaje)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mensaje)
-        </dd>
-
-    </dl>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Nombre)</label>
+                <div>@Html.DisplayFor(model => model.Nombre)</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Telefono)</label>
+                <div>@Html.DisplayFor(model => model.Telefono)</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Correo)</label>
+                <div>@Html.DisplayFor(model => model.Correo)</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Asunto)</label>
+                <div>@Html.DisplayFor(model => model.Asunto)</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-11">
+            <div class="form-group">
+                <label class="h6">@Html.DisplayNameFor(model => model.Mensaje)</label>
+                <div>@Html.EditorFor(model => model.Mensaje, new { htmlAttributes = new { @class = "form-control", @rows = "5", @readonly = "true" } })</div>
+            </div>
+        </div>
+    </div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Volver Atrás", "Index") |
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
         </div>
     }
 </div>

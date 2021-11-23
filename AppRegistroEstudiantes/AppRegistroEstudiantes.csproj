@@ -133,6 +133,7 @@
     <Compile Include="Controllers\ContactoController.cs" />
     <Compile Include="Controllers\CursoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorarioController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\TutorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -146,10 +147,15 @@
     <Compile Include="Migrations\202111182230259_AddContactModel.Designer.cs">
       <DependentUpon>202111182230259_AddContactModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111231349489_AddHorarioModel.cs" />
+    <Compile Include="Migrations\202111231349489_AddHorarioModel.Designer.cs">
+      <DependentUpon>202111231349489_AddHorarioModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Contacto.cs" />
     <Compile Include="Models\Curso.cs" />
+    <Compile Include="Models\Horario.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Registro.cs" />
     <Compile Include="Models\Tutor.cs" />
@@ -328,6 +334,11 @@
     <Content Include="Views\Contacto\Details.cshtml" />
     <Content Include="Views\Contacto\Edit.cshtml" />
     <Content Include="Views\Contacto\Index.cshtml" />
+    <Content Include="Views\Horario\Create.cshtml" />
+    <Content Include="Views\Horario\Delete.cshtml" />
+    <Content Include="Views\Horario\Details.cshtml" />
+    <Content Include="Views\Horario\Edit.cshtml" />
+    <Content Include="Views\Horario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -350,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111182230259_AddContactModel.resx">
       <DependentUpon>202111182230259_AddContactModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111231349489_AddHorarioModel.resx">
+      <DependentUpon>202111231349489_AddHorarioModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
