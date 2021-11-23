@@ -39,7 +39,7 @@ namespace AppRegistroEstudiantes.Controllers
 
         public ActionResult Contact()
         {
-            return View();
+            return RedirectToAction("Create", "Contacto");
         }
     }
 }

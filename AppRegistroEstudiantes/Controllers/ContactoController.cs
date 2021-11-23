@@ -53,7 +53,7 @@ namespace AppRegistroEstudiantes.Controllers
             {
                 db.Contacto.Add(contacto);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(contacto);
