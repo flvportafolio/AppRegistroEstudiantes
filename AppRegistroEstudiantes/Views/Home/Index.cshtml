@@ -6,25 +6,25 @@
 <div id="homeCarousel" class="carousel slide carouselCustomHeight mx-n2 mt-n4" data-ride="carousel">
     <div class="carousel-inner carouselCustomHeight">
         @{int i = 0;}
-        @foreach (var item in Model.Alumnos)
+        @foreach (var item in Model.Inscripciones)
         {
             if (i == 0)
             {
                 <div class="carousel-item active">
-                    <img src="/Content/Images/@item.Foto" class="carouselCustomHeight w-100 img-fluid">
+                    <img src="/Content/Images/@item.Alumno.Foto" class="carouselCustomHeight w-100 img-fluid">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>@item.NombreCompleto</h5>
-                        <p>Viene de: @item.Procedencia</p>
+                        <h5 class="text-dark">@item.Alumno.NombreCompleto</h5>
+                        <p class="text-dark">Inscrito el: @item.FechaInscripcion.ToString("dd'/'MM'/'yyyy")</p>
                     </div>
                 </div>
             }
             else
             {
                 <div class="carousel-item">
-                    <img src="/Content/Images/@item.Foto" class="carouselCustomHeight w-100 img-fluid">
+                    <img src="/Content/Images/@item.Alumno.Foto" class="carouselCustomHeight w-100 img-fluid">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>@item.NombreCompleto</h5>
-                        <p>Viene de: @item.Procedencia</p>
+                        <h5 class="text-dark">@item.Alumno.NombreCompleto</h5>
+                        <p class="text-dark">Inscrito el: @item.FechaInscripcion.ToString("dd'/'MM'/'yyyy")</p>
                     </div>
                 </div>
             }

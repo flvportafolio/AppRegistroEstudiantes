@@ -4,6 +4,7 @@
     String isRouteTutor = ViewContext.RouteData.Values["Controller"].ToString() == "Tutor" ? "active" : "";
     String isRouteAlumno = ViewContext.RouteData.Values["Controller"].ToString() == "Alumno" ? "active" : "";
     String isRouteRegistro = ViewContext.RouteData.Values["Controller"].ToString() == "Registro" ? "active" : "";
+    String isRouteHorario = ViewContext.RouteData.Values["Controller"].ToString() == "Horario" ? "active" : "";
     String isRouteContacto = ViewContext.RouteData.Values["action"].ToString() == "Contact" ? "active" : "";
 }
 <!DOCTYPE html>
@@ -19,7 +20,7 @@
 </head>
 <body>
     <div class="navbar navbar-expand-md navbar-dark bg-dark">
-        @Html.ActionLink("Colegio La Salle", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        @Html.ActionLink("Colegio Terranova", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navprincipal" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,6 +40,9 @@
                 </li>
                 <li class="nav-item @isRouteRegistro">
                     @Html.ActionLink("Registros", "Index", "Registro", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item @isRouteHorario">
+                    @Html.ActionLink("Horario", "Index", "Horario", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item @isRouteContacto">
                     @Html.ActionLink("Contacto", "Create", "Contacto", null, new { @class = "nav-link" })
@@ -66,8 +70,8 @@
                             <a href="@Url.Action("Contact", "Home")" class="text-light">Contacto</a>
                         </li>
                     </ul>
-                    <div class="col-md-12 text-center">
-                        <img src="https://www.colegioslasalle.edu.mx/images/la-salle-logo.png"/>
+                    <div class="col-md-12 text-center pt-4">
+                        <img src="https://www.terranova.edu.mx/wp-content/uploads/2019/08/logo-terranova.png"/>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -92,12 +96,12 @@
                     </div>
                     <div class="col-md-12 pb-2">
                         <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        <a class="pl-2 text-light" href="mailto:lasalle@example.com">lasalle@example.com</a>
+                        <a class="pl-2 text-light" href="mailto:lasalle@example.com">colegioterranova@example.com</a>
                     </div>
                     <div class="col-md-12 pb-2">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         <span class="pl-2 text-justify">
-                            Av. Ovidio Barbery Justiniano (radial 26)
+                            Av. Palmira Nº 705 San Luis Potosí, México
                         </span>
                     </div>
                 </div>
@@ -105,7 +109,7 @@
                     <h5 class="col-md-12">Mapa</h5>
                     <hr class="hr-footer">
                     <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1129.5828940845831!2d-63.18580718808963!3d-17.770591229558796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f1e7e47107048d%3A0xcd07cb73a5180680!2sColegio%20La%20Salle!5e0!3m2!1ses-419!2sbo!4v1637259630295!5m2!1ses-419!2sbo"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3696.053432112516!2d-101.02411238517807!3d22.12393838541548!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842a98e0e8e449eb%3A0x5b69f5ecbebc0bda!2sColegio+Internacional+Terranova!5e0!3m2!1ses!2smx!4v1565657461946!5m2!1ses!2smx"
                             height="250"
                             style="border:0;"
                             allowfullscreen=""
@@ -127,7 +131,7 @@
                 </div>
                 <div class="col-md-12">
                     <p class="text-center text-white">
-                        Copyright &copy; @DateTime.Now.Year - Colegio La Salle
+                        Copyright &copy; @DateTime.Now.Year - Colegio Internacional TERRANOVA
                     </p>
                 </div>
             </div>
