@@ -8,12 +8,12 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Editar Registro</h4>
+    <div class="form-horizontal" id="context">
+        <h4>{{title}}</h4>
         <hr />
         <div class="card">
             <div class="card-header">
-                @Html.ActionLink("Volver Atrás", "Index", "Registro", null, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Volver Atrás", "Index", "Registro", null, new { @class = "btn btn-secondary mr-1" })
                 <input type="submit" value="Actualizar" class="btn btn-primary" />
             </div>
             <div class="card-body">
@@ -42,7 +42,14 @@
                     </div>
                     <div class="form-group col-md-2">
                         @Html.LabelFor(model => model.Beca, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Beca, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "0.01", @Value = Model.Beca } })
+                        <input class="form-control"
+                               id="Beca"
+                               min="0"
+                               name="Beca"
+                               step="0.01"
+                               type="number"
+                               v-model="Beca.value"
+                               v-bind:disabled="Beca.disabled">
                         @Html.ValidationMessageFor(model => model.Beca, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -64,7 +71,13 @@
                     </div>
                     <div class="form-group col-md-1 text-center">
                         @Html.LabelFor(model => model.EsBecado, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.EsBecado, new { htmlAttributes = new { @onclick = "switchDisableInputBeca()" } })
+                        @Html.EditorFor(model => model.EsBecado, new
+                        {
+                            htmlAttributes = new Dictionary<string, object> {
+                            { "v-model", "esBecado" },
+                            { "@change", "switchDisableInputBeca" },
+                        }
+                        })
                         @Html.ValidationMessageFor(model => model.EsBecado, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-1 text-center">
@@ -87,17 +100,29 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script type="text/javascript">
-        let checkbox = document.getElementById("EsBecado");
-        document.getElementById("Beca").disabled = !checkbox.checked;
-        function switchDisableInputBeca() {
-            if (checkbox.checked) {
-                document.getElementById("Beca").disabled = !checkbox.checked;
-            } else {
-                document.getElementById("Beca").disabled = !checkbox.checked;
-                document.getElementById("Beca").value = "0.00";
+<script type="text/javascript">
+        Vue.createApp({
+            setup() {
+                const title = 'Editar Registro';
+                const Beca = Vue.reactive({
+                    value: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Beca,
+Newtonsoft.Json.Formatting.Indented)),
+                    disabled: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(!Model.EsBecado,
+Newtonsoft.Json.Formatting.Indented)),
+                });
+                const esBecado = Vue.ref(@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.EsBecado,
+Newtonsoft.Json.Formatting.Indented)));
+                const switchDisableInputBeca = () => {
+                    Beca.disabled = !esBecado.value;
+                    Beca.value = 0;
+                };
+                return {
+                    title,
+                    Beca,
+                    esBecado,
+                    switchDisableInputBeca
+                };
             }
-            
-        }
-    </script>
+        }).mount('#context');
+</script>
 }

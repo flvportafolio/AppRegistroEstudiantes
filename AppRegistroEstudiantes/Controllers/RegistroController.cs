@@ -50,8 +50,10 @@ namespace AppRegistroEstudiantes.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Beca,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
+        public ActionResult Create([Bind(Include = "Id,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
         {
+            string inputBeca = Request.Form["Beca"];            
+            registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
             if (ModelState.IsValid)
             {
                 db.Registro.Add(registro);
@@ -86,8 +88,10 @@ namespace AppRegistroEstudiantes.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Beca,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
+        public ActionResult Edit([Bind(Include = "Id,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
         {
+            string inputBeca = Request.Form["Beca"];
+            registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
             if (ModelState.IsValid)
             {
                 db.Entry(registro).State = EntityState.Modified;
