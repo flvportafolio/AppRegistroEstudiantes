@@ -52,8 +52,12 @@ namespace AppRegistroEstudiantes.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
         {
-            string inputBeca = Request.Form["Beca"];            
-            registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
+            string inputBeca = Request.Form["Beca"];
+            if (inputBeca != null)
+            {
+                registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
+            }
+
             if (ModelState.IsValid)
             {
                 db.Registro.Add(registro);
@@ -91,7 +95,11 @@ namespace AppRegistroEstudiantes.Controllers
         public ActionResult Edit([Bind(Include = "Id,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
         {
             string inputBeca = Request.Form["Beca"];
-            registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
+            if(inputBeca != null)
+            {
+                registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(registro).State = EntityState.Modified;
