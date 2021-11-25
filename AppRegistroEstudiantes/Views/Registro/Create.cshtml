@@ -4,17 +4,15 @@
     ViewBag.Title = "Registro - Nuevo";
 }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal" id="context">
-        <h4>{{title}}</h4>
-        <hr />
-        <div class="card">
+<div class="form-horizontal" id="context">
+    <h4>{{title}}</h4>
+    <hr />
+    <div class="card">
+        <form action="@Url.Action("Create", "Registro")" method="post" @@submit="checkForm">
+            @Html.AntiForgeryToken()
             <div class="card-header">
                 @Html.ActionLink("Volver Atrás", "Index", "Registro", null, new { @class = "btn btn-secondary mr-1" })
-                <input type="submit" value="Guardar" class="btn btn-primary"/>
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
             <div class="card-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -41,16 +39,14 @@
                     </div>
                     <div class="form-group col-md-2">
                         @Html.LabelFor(model => model.Beca, htmlAttributes: new { @class = "control-label" })
-                        <input
-                               class="form-control"
+                        <input class="form-control"
                                id="Beca"
                                min="0"
                                name="Beca"
                                step="0.01"
                                type="number"
                                v-model="Beca.value"
-                               v-bind:disabled="Beca.disabled"
-                        >
+                               v-bind:disabled="Beca.disabled">
                         @Html.ValidationMessageFor(model => model.Beca, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -72,10 +68,13 @@
                     </div>
                     <div class="form-group col-md-1 text-center">
                         @Html.LabelFor(model => model.EsBecado, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.EsBecado, new { htmlAttributes = new Dictionary<string, object> {
+                        @Html.EditorFor(model => model.EsBecado, new
+                        {
+                            htmlAttributes = new Dictionary<string, object> {
                             { "v-model", "esBecado" },
                             { "@change", "switchDisableInputBeca" },
-                        } })
+                        }
+                        })
                         @Html.ValidationMessageFor(model => model.EsBecado, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-1 text-center">
@@ -91,9 +90,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
-}
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
@@ -110,11 +109,33 @@
                     Beca.disabled = !esBecado.value;
                     Beca.value = 0;
                 };
+
+                function checkForm(e) {
+                    const form = new FormData();
+                    form.append("__RequestVerificationToken", e.target["__RequestVerificationToken"].value);
+                    form.append("AlumnoID", e.target["AlumnoID"].value);
+                    form.append("CursoID", e.target["CursoID"].value);
+                    form.append("FechaInscripcion", e.target["FechaInscripcion"].value);
+                    form.append("Matricula", e.target["Matricula"].value);
+                    form.append("Beca", Beca.value);
+                    form.append("Observacion1", e.target["Observacion1"].value);
+                    form.append("Observacion2", e.target["Observacion2"].value);
+                    form.append("EsTraspaso", e.target["EsTraspaso"][0].checked);
+                    form.append("EsBecado", esBecado.value);
+                    form.append("EsRepitente", e.target["EsRepitente"][0].checked);
+                    form.append("Estado", true);
+                    fetch("/Registro/Create", {
+                        method: "POST",
+                        body: form
+                    });
+                    e.preventDefault();
+                }
                 return {
                     title,
                     Beca,
                     esBecado,
-                    switchDisableInputBeca
+                    switchDisableInputBeca,
+                    checkForm
                 };
             }
         }).mount('#context');

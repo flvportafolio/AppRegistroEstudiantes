@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using AppRegistroEstudiantes.Models;
+using ClassLibraryFrontendUtils;
 using PracticaWeb1.Context;
 
 namespace AppRegistroEstudiantes.Controllers
@@ -51,12 +52,9 @@ namespace AppRegistroEstudiantes.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
-        {
+        {//en la vista para este metodo se estará enviando un form data
             string inputBeca = Request.Form["Beca"];
-            if (inputBeca != null)
-            {
-                registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
-            }
+            registro.Beca = FrontendUtils.ParseDecimal(inputBeca);
 
             if (ModelState.IsValid)
             {
@@ -95,10 +93,7 @@ namespace AppRegistroEstudiantes.Controllers
         public ActionResult Edit([Bind(Include = "Id,FechaInscripcion,Observacion1,Observacion2,EsTraspaso,EsBecado,EsRepitente,Matricula,Estado,AlumnoID,CursoID")] Registro registro)
         {
             string inputBeca = Request.Form["Beca"];
-            if(inputBeca != null)
-            {
-                registro.Beca = Convert.ToDecimal(inputBeca.Replace('.', ','));
-            }
+            registro.Beca = FrontendUtils.ParseDecimal(inputBeca);
 
             if (ModelState.IsValid)
             {

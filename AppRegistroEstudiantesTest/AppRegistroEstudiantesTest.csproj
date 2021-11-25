@@ -85,6 +85,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppRegistroEstudiantes\AppRegistroEstudiantes.csproj">
+      <Project>{ecb6cb80-1949-447c-867b-9b4016c1572f}</Project>
+      <Name>AppRegistroEstudiantes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibraryFrontendUtils\ClassLibraryFrontendUtils.csproj">
+      <Project>{992e16af-25fd-4b74-ae17-7265fcb4eaca}</Project>
+      <Name>ClassLibraryFrontendUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
