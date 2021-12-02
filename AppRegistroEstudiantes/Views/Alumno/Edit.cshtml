@@ -4,7 +4,7 @@
     ViewBag.Title = "Alumno - Editar";
 }
 
-@using (Html.BeginForm("Edit", "Alumno", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Alumno", FormMethod.Post, new { id = "formEditAlumno", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-header">
                 @Html.ActionLink("Volver Atrás", "Index", "Alumno", null, new { @class = "btn btn-secondary" })
-                <input type="submit" value="Actualizar" class="btn btn-primary" />
+                <input id="btnActualizar" type="submit" value="Actualizar" class="btn btn-primary" />
             </div>
             <div class="card-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -78,10 +78,13 @@
                 <div class="form-row">
                     <div class="form-group col-md-2">
                         @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label" })
-                        @*<img src="/Content/Images/@Model.Foto" class="col-md-12"/>*@
-                        <label class="col-md-12 btn btn-secondary">
-                            <input id="FotoUpdated" name="FotoUpdated" type="file" class="d-none" accept="image/png, image/jpeg" />Subir Foto
-                        </label>
+                        <div class="col-md-12 px-0">
+                            <img src="/Content/Images/@Model.Foto" class="col-md-12 px-0" />
+                            <label class="btn btn-block btn-secondary mt-3">
+                                <input id="FotoUpdated" name="FotoUpdated" type="file" class="d-none" accept="image/png, image/jpeg" />Subir Foto
+                            </label>
+                        </div>
+                        
                         @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-3">

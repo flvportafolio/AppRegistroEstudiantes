@@ -4,7 +4,7 @@
     ViewBag.Title = "Horario - Nuevo";
 }
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreateHorario" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-header">
                 @Html.ActionLink("Volver Atrás", "Index", "Horario", null, new { @class = "btn btn-secondary" })
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input id="btnGuardar" type="submit" value="Guardar" class="btn btn-primary" />
             </div>
             <div class="card-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })

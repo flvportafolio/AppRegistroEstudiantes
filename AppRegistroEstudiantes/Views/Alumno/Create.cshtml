@@ -4,7 +4,7 @@
     ViewBag.Title = "Alumno - Nuevo";
 }
 
-@using (Html.BeginForm("Create", "Alumno", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Alumno", FormMethod.Post, new { id = "formCreateAlumno", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-header">
                 @Html.ActionLink("Volver Atrás", "Index", "Alumno", null, new { @class = "btn btn-secondary" })
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input id="btnGuardar" type="submit" value="Guardar" class="btn btn-primary" />
             </div>
             <div class="card-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
