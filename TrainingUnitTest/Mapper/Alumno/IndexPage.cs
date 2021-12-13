@@ -12,16 +12,10 @@ namespace TrainingUnitTest.Mapper.Alumno
     public class IndexPage
     {
         public string URL { get; }
-        public AnchorObject EditarButton { get; set; }
-        public AnchorObject VerButton { get; set; }
-        public AnchorObject EliminarButton { get; set; }
 
         public IndexPage()
         {
             URL = "http://localhost/Alumno";
-            EditarButton = new AnchorObject(By.XPath("//tbody/tr[2]/td[1]/a[@title='Editar']"));
-            VerButton = new AnchorObject(By.XPath("//tbody/tr[2]/td[2]/a[@title='Ver']"));
-            EliminarButton = new AnchorObject(By.XPath("//tbody/tr[2]/td[3]/a[@title='Eliminar']"));
         }
 
         public void CloseBrowser()
@@ -32,6 +26,18 @@ namespace TrainingUnitTest.Mapper.Alumno
         public bool ExistRowInTable(string nombreAlumno)
         {
             return Browser.GetDriver().FindElement(By.XPath($"//td[contains(text(),'{nombreAlumno}')]")) != null;
+        }
+        public AnchorObject GetEditarButtonInRow(string nombreAlumno)
+        {
+            return new AnchorObject(By.XPath($"//table//td[contains(text(),'{nombreAlumno}')]/..//a[@title='Editar']"));
+        }
+        public AnchorObject GetVerButtonInRow(string nombreAlumno)
+        {
+            return new AnchorObject(By.XPath($"//table//td[contains(text(),'{nombreAlumno}')]/..//a[@title='Ver']"));
+        }
+        public AnchorObject GetEliminarButtonInRow(string nombreAlumno)
+        {
+            return new AnchorObject(By.XPath($"//table//td[contains(text(),'{nombreAlumno}')]/..//a[@title='Eliminar']"));
         }
     }
 }

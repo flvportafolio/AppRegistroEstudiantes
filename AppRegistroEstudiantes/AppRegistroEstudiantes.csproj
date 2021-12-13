@@ -151,6 +151,10 @@
     <Compile Include="Migrations\202111231349489_AddHorarioModel.Designer.cs">
       <DependentUpon>202111231349489_AddHorarioModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112120243186_addCarnetRequired.cs" />
+    <Compile Include="Migrations\202112120243186_addCarnetRequired.Designer.cs">
+      <DependentUpon>202112120243186_addCarnetRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Alumno.cs" />
     <Compile Include="Models\Contacto.cs" />
@@ -364,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111231349489_AddHorarioModel.resx">
       <DependentUpon>202111231349489_AddHorarioModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112120243186_addCarnetRequired.resx">
+      <DependentUpon>202112120243186_addCarnetRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

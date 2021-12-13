@@ -44,6 +44,7 @@ namespace TrainingUnitTest.Mapper.Alumno
         public TextboxObject MadreInput { get; set; }
 
         public SpanObject MsgValidationForName { get; set; }
+        public SpanObject MsgValidationForCI { get; set; }
         public SpanObject MsgValidationForFechaNac { get; set; }
         public SpanObject MsgValidationForFoto { get; set; }
 
@@ -83,6 +84,7 @@ namespace TrainingUnitTest.Mapper.Alumno
             MadreInput = new TextboxObject(By.CssSelector("#MadreID"));
 
             MsgValidationForName = new SpanObject(By.CssSelector("#Nombre-error"));
+            MsgValidationForCI = new SpanObject(By.CssSelector("#CI-error"));
             MsgValidationForFechaNac = new SpanObject(By.CssSelector("#FechaNacimiento-error"));
             MsgValidationForFoto = new SpanObject(By.XPath("//span[@data-valmsg-for='Foto']"));
         }

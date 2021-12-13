@@ -7,24 +7,13 @@ using System.Linq;
 
 namespace TrainingUnitTest
 {
-    [TestClass]
-    public class TestCase1: UIBase
+    [TestClass]    
+    public class CreateDeleteAlumnoTest: UIBase
     {
-        //[TestMethod]
-        /*public void TestSearchGoogle()
-        {
-            IWebDriver driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://www.google.com");
-            driver.Manage().Window.Maximize();
-            IWebElement txtBuscar = driver.FindElement(By.CssSelector(".gLFyf[title='Buscar']"));
-            txtBuscar.SendKeys("Selenium");
-            var txtBuscarValue = txtBuscar.GetAttribute("value");
-            txtBuscar.Click();
-            Assert.IsTrue(txtBuscarValue == "Selenium", "Error en el input");
-
-        }*/
         private string nombreAlumno = "Juan Carlos";
+
         [TestMethod]
+        [TestCategory("Alumno")]
         public void Test1_VerificarLabelsFormulario() {
             //Arrange
             MapperWeb.LaunchBrowser(MapperWeb.CreateAlumno.URL);
@@ -40,6 +29,7 @@ namespace TrainingUnitTest
             MapperWeb.IndexAlumno.CloseBrowser();
         }
         [TestMethod]
+        [TestCategory("Alumno")]
         public void Test2_VerificarInputsFormulario()
         {
             MapperWeb.LaunchBrowser(MapperWeb.CreateAlumno.URL);
@@ -48,6 +38,7 @@ namespace TrainingUnitTest
             MapperWeb.IndexAlumno.CloseBrowser();
         }
         [TestMethod]
+        [TestCategory("Alumno")]
         public void Test3_InsertarAlumno_CamposRequeridos()
         {
             //Arrange
@@ -66,6 +57,7 @@ namespace TrainingUnitTest
             MapperWeb.IndexAlumno.CloseBrowser();
         }
         [TestMethod]
+        [TestCategory("Alumno")]
         public void Test4_VerificarAlumnoInsertado_CamposRequeridos()
         {
             MapperWeb.LaunchBrowser(MapperWeb.IndexAlumno.URL);                        
@@ -73,10 +65,11 @@ namespace TrainingUnitTest
             MapperWeb.IndexAlumno.CloseBrowser();
         }
         [TestMethod]
+        [TestCategory("Alumno")]
         public void Test5_EliminarAlumnoInsertado_CamposRequeridos() 
         {
             MapperWeb.LaunchBrowser(MapperWeb.IndexAlumno.URL);
-            MapperWeb.IndexAlumno.EliminarButton.Click();
+            MapperWeb.IndexAlumno.GetEliminarButtonInRow(nombreAlumno).Click();
             MapperWeb.DeleteAlumno.EliminarButton.Click();
             //Assert
             Assert.AreEqual(MapperWeb.IndexAlumno.URL, MapperWeb.GetCurrentUrl(), "Error al redirigir a la interfaz de listar alumnos");

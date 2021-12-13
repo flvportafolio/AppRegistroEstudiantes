@@ -9,6 +9,7 @@ namespace TrainingUnitTest
 {
     public class MapperWeb
     {
+        public Mapper.MasterPage MasterPage { get; set; }
         public Mapper.Alumno.IndexPage IndexAlumno { get; set; }
         public Mapper.Alumno.CreatePage CreateAlumno { get; set; }
         public Mapper.Alumno.DeletePage DeleteAlumno { get; set; }
@@ -20,6 +21,7 @@ namespace TrainingUnitTest
             IndexAlumno = new Mapper.Alumno.IndexPage();
             CreateAlumno = new Mapper.Alumno.CreatePage();
             DeleteAlumno = new Mapper.Alumno.DeletePage();
+            MasterPage = new Mapper.MasterPage();
         }
 
         public string GetCurrentUrl()

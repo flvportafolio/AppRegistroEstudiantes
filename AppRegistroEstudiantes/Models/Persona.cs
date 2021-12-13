@@ -21,6 +21,7 @@ namespace AppRegistroEstudiantes.Models
         public enum TipoGenero { Hombre = 1, Mujer = 2 }
         public TipoGenero Genero { get; set; }
 
+        [Required]
         public string CI { get; set; }
 
         [DataType(DataType.Date)]

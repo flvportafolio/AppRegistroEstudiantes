@@ -15,7 +15,7 @@
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(PracticaWeb1.Context.SchoolContext context)
+        /*protected override void Seed(PracticaWeb1.Context.SchoolContext context)
         {
             List<Curso> cursos = new List<Curso>
             {
@@ -96,6 +96,6 @@
             };
             context.Registro.AddOrUpdate(registro_1);
             context.SaveChanges();
-        }
+        }*/
     }
 }

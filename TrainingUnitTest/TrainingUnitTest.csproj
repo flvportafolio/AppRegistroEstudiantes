@@ -62,16 +62,18 @@
     <Compile Include="Mapper\Alumno\CreatePage.cs" />
     <Compile Include="Mapper\Alumno\DeletePage.cs" />
     <Compile Include="Mapper\Alumno\IndexPage.cs" />
+    <Compile Include="Mapper\MasterPage.cs" />
     <Compile Include="Mapper\Registro\IndexPage.cs" />
     <Compile Include="ObjectsTests\AnchorObject.cs" />
     <Compile Include="ObjectsTests\ButtonObject.cs" />
     <Compile Include="ObjectsTests\LabelObject.cs" />
     <Compile Include="ObjectsTests\SpanObject.cs" />
     <Compile Include="ObjectsTests\TextboxObject.cs" />
-    <Compile Include="UITest\TestCase1.cs" />
+    <Compile Include="UITest\CreateDeleteAlumnoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UITest\TestCase2.cs" />
-    <Compile Include="UITest\TestCase3.cs" />
+    <Compile Include="UITest\ActionButtonsAlumnoTest.cs" />
+    <Compile Include="UITest\NavigationMasterPageTest.cs" />
+    <Compile Include="UITest\ValidationMessageCreateAlumnoTest.cs" />
     <Compile Include="UIBase.cs" />
   </ItemGroup>
   <ItemGroup>

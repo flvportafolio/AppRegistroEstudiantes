@@ -8,6 +8,9 @@ using TrainingUnitTest.Helper;
 
 namespace TrainingUnitTest.ObjectsTests
 {
+    /// <summary>
+    /// Esta Clase Representa a un Input Element de HTML
+    /// </summary>
     public class TextboxObject
     {
         private By Locator { get; set; }
@@ -21,6 +24,10 @@ namespace TrainingUnitTest.ObjectsTests
         {
             DriverHelper.SetText(Locator, text);
         }
+
+        /// <summary>
+        /// Funcion que devuelve true si el valor del atributo CSS "visibility" es "visible"
+        /// </summary>        
         public bool IsVisible()
         {
             return DriverHelper.GetCssValue(Locator, "visibility") == "visible";
