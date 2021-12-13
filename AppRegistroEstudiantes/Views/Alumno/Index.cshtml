@@ -98,14 +98,10 @@
                     @Html.DisplayFor(modelItem => item.Procedencia)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Madre.Nombre)
-                    @Html.DisplayFor(modelItem => item.Madre.ApellidoPaterno)
-                    @Html.DisplayFor(modelItem => item.Madre.ApellidoMaterno)
+                    @Html.DisplayFor(modelItem => item.Madre.NombreCompleto)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Padre.Nombre)
-                    @Html.DisplayFor(modelItem => item.Padre.ApellidoPaterno)
-                    @Html.DisplayFor(modelItem => item.Padre.ApellidoMaterno)
+                    @Html.DisplayFor(modelItem => item.Padre.NombreCompleto)
                 </td>
             </tr>
         }

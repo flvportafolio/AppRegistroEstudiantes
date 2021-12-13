@@ -5,7 +5,7 @@ using OpenQA.Selenium.Chrome;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TrainingUnitTest
+namespace TrainingUnitTest.UITest
 {
     [TestClass]    
     public class CreateDeleteAlumnoTest: UIBase
@@ -49,7 +49,7 @@ namespace TrainingUnitTest
             //Registrar Alumno
             MapperWeb.CreateAlumno.NombreInput.SetText(nombreAlumno);
             MapperWeb.CreateAlumno.FechaNacimientoInput.SetText("12/10/2002");                        
-            MapperWeb.CreateAlumno.FotoInput.SetText(@"C:\Users\FABIOPC\Documents\Visual Studio 2019\Proyectos\AppRegistroEstudiantes\AppRegistroEstudiantes\Content\Images\ProfileTest.png");            
+            MapperWeb.CreateAlumno.FotoInput.SetText(@"C:\Users\FABIOPC\Documents\Visual Studio 2019\Proyectos\AppRegistroEstudiantes\AppRegistroEstudiantes\Content\Images\ProfileTest.png");
             MapperWeb.CreateAlumno.GuardarButton.Click();
 
             //Assert

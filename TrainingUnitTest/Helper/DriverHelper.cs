@@ -27,6 +27,26 @@ namespace TrainingUnitTest.Helper
             }
         }
 
+        public static void Clear(By locator)
+        {
+            try
+            {
+                if (ElementIsDisplayed(locator))
+                {
+                    var webElement = Browser.GetDriver().FindElement(locator);
+                    webElement.Clear();
+                }
+                else
+                {
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public static void Click(By locator)
         {
             try
@@ -70,6 +90,7 @@ namespace TrainingUnitTest.Helper
             }
             return null;
         }
+
         public static string GetCssValue(By locator, string property, int timeOut = 20)
         {
             try
@@ -81,6 +102,21 @@ namespace TrainingUnitTest.Helper
             {
                 return "";
             }            
+        }
+
+        public static void SelectOptionByText(By locator, string text)
+        {
+            try
+            {
+                SelectElement selectElement = new SelectElement(Browser.GetDriver().FindElement(locator));
+                selectElement.SelectByText(text);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
