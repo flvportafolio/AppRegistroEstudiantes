@@ -8,6 +8,9 @@ using TrainingUnitTest.Helper;
 
 namespace TrainingUnitTest.ObjectsTests
 {
+    /// <summary>
+    /// Esta Clase Representa a un Label Element de HTML
+    /// </summary>
     public class LabelObject
     {
         private By Locator { get; set; }

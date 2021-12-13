@@ -8,6 +8,9 @@ using TrainingUnitTest.ObjectsTests;
 
 namespace TrainingUnitTest.Mapper
 {
+    /// <summary>
+    /// Representa a la pagina que hace de Layout Principal para todas las vistas.
+    /// </summary>
     public class MasterPage
     {
         public AnchorObject InicioNavItem { get; set; }

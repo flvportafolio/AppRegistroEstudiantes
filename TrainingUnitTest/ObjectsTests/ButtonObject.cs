@@ -8,6 +8,9 @@ using TrainingUnitTest.Helper;
 
 namespace TrainingUnitTest.ObjectsTests
 {
+    /// <summary>
+    /// Esta Clase Representa a un Button Element de HTML
+    /// </summary>
     public class ButtonObject
     {
         public ButtonObject(By locator)

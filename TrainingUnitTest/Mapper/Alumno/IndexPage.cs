@@ -9,6 +9,9 @@ using TrainingUnitTest.ObjectsTests;
 
 namespace TrainingUnitTest.Mapper.Alumno
 {
+    /// <summary>
+    /// Representa a la pagina Index del modulo Alumno
+    /// </summary>
     public class IndexPage
     {
         public string URL { get; }

@@ -10,6 +10,9 @@ using OpenQA.Selenium.Chrome;
 
 namespace TrainingUnitTest.Helper
 {
+    /// <summary>
+    /// Representa al Navegador Web Chrome y sus funcionalidades.
+    /// </summary>
     public class Browser
     {
         static ConcurrentDictionary<Thread, IWebDriver> drivers = new ConcurrentDictionary<Thread, IWebDriver>();

@@ -9,6 +9,9 @@ using TrainingUnitTest.ObjectsTests;
 
 namespace TrainingUnitTest.Mapper.Alumno
 {
+    /// <summary>
+    /// Representa a la pagina Create del modulo Alumno
+    /// </summary>
     public class CreatePage
     {
         public string URL { get; }

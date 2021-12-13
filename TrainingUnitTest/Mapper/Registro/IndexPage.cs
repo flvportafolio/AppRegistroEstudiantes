@@ -9,6 +9,9 @@ using TrainingUnitTest.ObjectsTests;
 
 namespace TrainingUnitTest.Mapper.Registro
 {
+    /// <summary>
+    /// Representa a la pagina Index del modulo Registro
+    /// </summary>
     public class IndexPage
     {
         public ButtonObject EditarButton { get; set; }

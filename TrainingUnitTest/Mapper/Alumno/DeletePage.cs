@@ -9,6 +9,9 @@ using TrainingUnitTest.ObjectsTests;
 
 namespace TrainingUnitTest.Mapper.Alumno
 {
+    /// <summary>
+    /// Representa a la pagina Delete del modulo Alumno
+    /// </summary>
     public class DeletePage
     {
         public string URL { get; }

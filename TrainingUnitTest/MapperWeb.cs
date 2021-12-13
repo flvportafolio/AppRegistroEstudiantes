@@ -7,6 +7,9 @@ using TrainingUnitTest.Helper;
 
 namespace TrainingUnitTest
 {
+    /// <summary>
+    /// Esta Clase Representa al Sitio Web y su conjunto de paginas 
+    /// </summary>
     public class MapperWeb
     {
         public Mapper.MasterPage MasterPage { get; set; }

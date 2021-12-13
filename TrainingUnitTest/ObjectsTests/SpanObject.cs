@@ -8,6 +8,9 @@ using TrainingUnitTest.Helper;
 
 namespace TrainingUnitTest.ObjectsTests
 {
+    /// <summary>
+    /// Esta Clase Representa a un Span Element de HTML
+    /// </summary>
     public class SpanObject
     {
         private By Locator { get; set; }

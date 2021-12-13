@@ -8,6 +8,9 @@ using OpenQA.Selenium.Support.UI;
 
 namespace TrainingUnitTest.Helper
 {
+    /// <summary>
+    /// Conjunto de utilidades para brindar funcionalidades a elementos HTML.
+    /// </summary>
     class DriverHelper
     {
         public static void SetText(By locator, string text)
@@ -49,19 +52,6 @@ namespace TrainingUnitTest.Helper
             {
 
                 return false;
-            }
-        }
-        public static string GetHref (By locator) //usar GetAttribute en vez de esta funcion
-        {
-            try
-            {
-                var webElement = Browser.GetDriver().FindElement(locator);
-                return webElement.GetAttribute("href");
-            }
-            catch (Exception)
-            {
-
-                return "";
             }
         }
         public static string GetAttribute(By locator, string attribute, int timeOut = 20)

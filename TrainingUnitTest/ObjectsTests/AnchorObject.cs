@@ -8,6 +8,9 @@ using TrainingUnitTest.Helper;
 
 namespace TrainingUnitTest.ObjectsTests
 {
+    /// <summary>
+    /// Esta Clase Representa al &lt;a&gt; Tag Element de HTML
+    /// </summary>
     public class AnchorObject
     {
         public AnchorObject(By locator)
@@ -22,7 +25,7 @@ namespace TrainingUnitTest.ObjectsTests
 
         public string GetHref()
         {
-            return DriverHelper.GetHref(Locator);
+            return DriverHelper.GetAttribute(Locator, "href");
         }
 
         public bool IsDisplayed => DriverHelper.ElementIsDisplayed(Locator);
