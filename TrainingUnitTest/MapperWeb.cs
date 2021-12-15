@@ -4,29 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TrainingUnitTest.Helper;
+using TrainingUnitTest.Mapper;
 
 namespace TrainingUnitTest
 {
     /// <summary>
-    /// Esta Clase Representa al Sitio Web y su conjunto de paginas 
+    /// Esta Clase Representa al Sitio Web y su conjunto de modulos 
     /// </summary>
     public class MapperWeb
     {
-        public Mapper.MasterPage MasterPage { get; set; }
-        public Mapper.Alumno.IndexPage IndexAlumno { get; set; }
-        public Mapper.Alumno.CreatePage CreateAlumno { get; set; }
-        public Mapper.Alumno.UpdatePage UpdateAlumno { get; set; }
-        public Mapper.Alumno.DeletePage DeleteAlumno { get; set; }
-
-        public Mapper.Registro.IndexPage IndexRegistro { get; set; }
+        public MasterPage MasterPage { get; set; }
+        public Alumno AlumnoPage { get; set; }
+        public Registro RegistroPage { get; set; }
 
         public MapperWeb()
         {
-            IndexAlumno = new Mapper.Alumno.IndexPage();
-            CreateAlumno = new Mapper.Alumno.CreatePage();
-            UpdateAlumno = new Mapper.Alumno.UpdatePage();
-            DeleteAlumno = new Mapper.Alumno.DeletePage();
-            MasterPage = new Mapper.MasterPage();
+            AlumnoPage = new Alumno();
+            MasterPage = new MasterPage();
         }
 
         public string GetCurrentUrl()

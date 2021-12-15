@@ -17,17 +17,17 @@ namespace TrainingUnitTest.UITest
             string expectedCIMessage = "El campo CI es obligatorio.";
             string expectedFechaNacMessage = "El campo Fecha de Nacimiento es obligatorio.";
 
-            MapperWeb.LaunchBrowser(MapperWeb.CreateAlumno.URL);
-            MapperWeb.CreateAlumno.GuardarButton.Click();
-            string CurrentTextNameValidation = MapperWeb.CreateAlumno.MsgValidationForName.GetText();
-            string CurrentTextCIValidation = MapperWeb.CreateAlumno.MsgValidationForCI.GetText();
-            string CurrentTextFechaNacValidation = MapperWeb.CreateAlumno.MsgValidationForFechaNac.GetText();
+            MapperWeb.LaunchBrowser(MapperWeb.AlumnoPage.CreateURL);
+            MapperWeb.AlumnoPage.GuardarButton.Click();
+            string CurrentTextNameValidation = MapperWeb.AlumnoPage.MsgValidationForName.GetText();
+            string CurrentTextCIValidation = MapperWeb.AlumnoPage.MsgValidationForCI.GetText();
+            string CurrentTextFechaNacValidation = MapperWeb.AlumnoPage.MsgValidationForFechaNac.GetText();
 
             //Assert
             Assert.AreEqual(expectedNameMessage, CurrentTextNameValidation, "Error al mostrar el mensaje de validacion para nombre");
             Assert.AreEqual(expectedCIMessage, CurrentTextCIValidation, "Error al mostrar el mensaje de validacion para CI");
             Assert.AreEqual(expectedFechaNacMessage, CurrentTextFechaNacValidation, "Error al mostrar el mensaje de validacion para fecha de nacimiento");
-            MapperWeb.IndexAlumno.CloseBrowser();
+            MapperWeb.AlumnoPage.CloseBrowser();
         }
         [TestMethod]
         [TestCategory("Alumno")]
@@ -36,16 +36,16 @@ namespace TrainingUnitTest.UITest
             //Arrange
             string expectedMessage = "El campo Foto es obligatorio.";
 
-            MapperWeb.LaunchBrowser(MapperWeb.CreateAlumno.URL);
-            MapperWeb.CreateAlumno.NombreInput.SetText("Roberto Carlos");
-            MapperWeb.CreateAlumno.CIInput.SetText("5012345");
-            MapperWeb.CreateAlumno.FechaNacimientoInput.SetText("12/10/2004");
-            MapperWeb.CreateAlumno.GuardarButton.Click();                        
-            string CurrentTextFotoValidation = MapperWeb.CreateAlumno.MsgValidationForFoto.GetText();
+            MapperWeb.LaunchBrowser(MapperWeb.AlumnoPage.CreateURL);
+            MapperWeb.AlumnoPage.NombreInput.SetText("Roberto Carlos");
+            MapperWeb.AlumnoPage.CIInput.SetText("5012345");
+            MapperWeb.AlumnoPage.FechaNacimientoInput.SetText("12/10/2004");
+            MapperWeb.AlumnoPage.GuardarButton.Click();                        
+            string CurrentTextFotoValidation = MapperWeb.AlumnoPage.MsgValidationForFoto.GetText();
 
             //Assert
             Assert.AreEqual(expectedMessage, CurrentTextFotoValidation, "Error al mostrar el mensaje de validacion para foto");
-            MapperWeb.IndexAlumno.CloseBrowser();
+            MapperWeb.AlumnoPage.CloseBrowser();
         }
     }
 }

@@ -40,7 +40,7 @@ namespace TrainingUnitTest.UITest
             MapperWeb.MasterPage.ContactoNavItem.Click();
             Assert.AreEqual(expectedContactoURL, MapperWeb.GetCurrentUrl(), "Error con las Url de Contacto");
 
-            MapperWeb.IndexAlumno.CloseBrowser();
+            MapperWeb.MasterPage.CloseBrowser();
         }
     }
 }

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using TrainingUnitTest.Helper;
 using TrainingUnitTest.ObjectsTests;
 
-namespace TrainingUnitTest.Mapper.Alumno
+namespace TrainingUnitTest.Mapper
 {
-    /// <summary>
-    /// Representa a la pagina Create del modulo Alumno
-    /// </summary>
-    public class CreatePage
+    public class Alumno
     {
-        public string URL { get; }
+        public string IndexURL { get; }
+        public string CreateURL { get; }
+        public string DeleteURL { get; }
+        //create alumno
         public ButtonObject GuardarButton { get; set; }
         public LabelObject NombreLabel { get; set; }
         public LabelObject ApellidoPaternoLabel { get; set; }
@@ -51,9 +51,21 @@ namespace TrainingUnitTest.Mapper.Alumno
         public SpanObject MsgValidationForFechaNac { get; set; }
         public SpanObject MsgValidationForFoto { get; set; }
 
-        public CreatePage()
+        //actualizar alumno
+        public ButtonObject ActualizarButton { get; set; }
+        public TextboxObject FotoUpdateInput { get; set; }
+        public TextboxObject GeneroSelect { get; set; }
+
+        //delete alumno
+        public ButtonObject EliminarButton { get; set; }
+
+        public Alumno()
         {
-            URL = "http://localhost/Alumno/Create";
+            IndexURL = "http://localhost/Alumno";
+            CreateURL = "http://localhost/Alumno/Create";
+            DeleteURL = "http://localhost/Alumno/Delete";
+
+            //guardar alumno
             GuardarButton = new ButtonObject(By.CssSelector("#btnGuardar"));
 
             NombreLabel = new LabelObject(By.XPath("//label[contains(@class, 'control-label') and text() = 'Nombre']"));
@@ -90,13 +102,41 @@ namespace TrainingUnitTest.Mapper.Alumno
             MsgValidationForCI = new SpanObject(By.CssSelector("#CI-error"));
             MsgValidationForFechaNac = new SpanObject(By.CssSelector("#FechaNacimiento-error"));
             MsgValidationForFoto = new SpanObject(By.XPath("//span[@data-valmsg-for='Foto']"));
+
+            //actualizar alumno
+            ActualizarButton = new ButtonObject(By.CssSelector("#btnActualizar"));
+            FotoUpdateInput = new TextboxObject(By.CssSelector("#FotoUpdated"));
+            GeneroSelect = new TextboxObject(By.CssSelector("#Genero"));
+
+            //delete alumno
+            EliminarButton = new ButtonObject(By.CssSelector("#btnEliminar"));
         }
         public void CloseBrowser()
         {
             Browser.CloseBrowser();
         }
 
-        public List<string> GetformLabelsValueToList() {
+        // index alumno methods
+        public bool ExistRowInTable(string nombreAlumno)
+        {
+            return Browser.GetDriver().FindElement(By.XPath($"//td[contains(text(),'{nombreAlumno}')]")) != null;
+        }
+        public AnchorObject GetEditarButtonInRow(string nombreAlumno)
+        {
+            return new AnchorObject(By.XPath($"//table//td[contains(text(),'{nombreAlumno}')]/..//a[@title='Editar']"));
+        }
+        public AnchorObject GetVerButtonInRow(string nombreAlumno)
+        {
+            return new AnchorObject(By.XPath($"//table//td[contains(text(),'{nombreAlumno}')]/..//a[@title='Ver']"));
+        }
+        public AnchorObject GetEliminarButtonInRow(string nombreAlumno)
+        {
+            return new AnchorObject(By.XPath($"//table//td[contains(text(),'{nombreAlumno}')]/..//a[@title='Eliminar']"));
+        }
+
+        //create alumno methods
+        public List<string> GetformLabelsValueToList()
+        {
             return new List<string> {
                 NombreLabel.GetText(),
                 ApellidoPaternoLabel.GetText(),
@@ -116,7 +156,7 @@ namespace TrainingUnitTest.Mapper.Alumno
         }
         public bool AreAllInputVisible()
         {
-            List <TextboxObject> ListaInputs = new List<TextboxObject> {
+            List<TextboxObject> ListaInputs = new List<TextboxObject> {
                 NombreInput,
                 ApellidoPaternoInput,
                 ApellidoMaternoInput,
@@ -132,7 +172,7 @@ namespace TrainingUnitTest.Mapper.Alumno
                 PadreInput,
                 MadreInput,
             };
-            int counterVisibleItems = 0;            
+            int counterVisibleItems = 0;
             foreach (TextboxObject formItem in ListaInputs)
             {
                 if (formItem.IsVisible())
@@ -141,6 +181,21 @@ namespace TrainingUnitTest.Mapper.Alumno
                 }
             }
             return counterVisibleItems == ListaInputs.Count();
+        }
+
+        // update alumno methods
+        public void ClearFormulario()
+        {
+            NombreInput.Clear();
+            ApellidoPaternoInput.Clear();
+            ApellidoMaternoInput.Clear();
+            CIInput.Clear();
+            FechaNacimientoInput.Clear();
+            LugarNacimientoInput.Clear();
+            DireccionInput.Clear();
+            ZonaInput.Clear();
+            TelefonoInput.Clear();
+            ProcedenciaInput.Clear();
         }
     }
 }

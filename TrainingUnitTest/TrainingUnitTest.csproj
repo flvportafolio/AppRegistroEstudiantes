@@ -59,12 +59,9 @@
     <Compile Include="Helper\Browser.cs" />
     <Compile Include="Helper\DriverHelper.cs" />
     <Compile Include="MapperWeb.cs" />
-    <Compile Include="Mapper\Alumno\CreatePage.cs" />
-    <Compile Include="Mapper\Alumno\DeletePage.cs" />
-    <Compile Include="Mapper\Alumno\IndexPage.cs" />
-    <Compile Include="Mapper\Alumno\UpdatePage.cs" />
+    <Compile Include="Mapper\Alumno.cs" />
     <Compile Include="Mapper\MasterPage.cs" />
-    <Compile Include="Mapper\Registro\IndexPage.cs" />
+    <Compile Include="Mapper\Registro.cs" />
     <Compile Include="ObjectsTests\AnchorObject.cs" />
     <Compile Include="ObjectsTests\ButtonObject.cs" />
     <Compile Include="ObjectsTests\LabelObject.cs" />

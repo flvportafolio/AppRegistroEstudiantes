@@ -7,16 +7,13 @@ using System.Threading.Tasks;
 using TrainingUnitTest.Helper;
 using TrainingUnitTest.ObjectsTests;
 
-namespace TrainingUnitTest.Mapper.Registro
+namespace TrainingUnitTest.Mapper
 {
-    /// <summary>
-    /// Representa a la pagina Index del modulo Registro
-    /// </summary>
-    public class IndexPage
+    public class Registro
     {
         public ButtonObject EditarButton { get; set; }
 
-        public IndexPage()
+        public Registro()
         {
             EditarButton = new ButtonObject(By.XPath("//tbody/tr[2]/td[1]/a[@title='Editar']"));
         }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrainingUnitTest.Helper;
 using TrainingUnitTest.ObjectsTests;
 
 namespace TrainingUnitTest.Mapper
@@ -30,6 +31,10 @@ namespace TrainingUnitTest.Mapper
             RegistrosNavItem = new AnchorObject(By.XPath("//div[@id='navprincipal']/ul/li/a[contains(text(),'Registros')]"));
             HorarioNavItem = new AnchorObject(By.XPath("//div[@id='navprincipal']/ul/li/a[contains(text(),'Horario')]"));
             ContactoNavItem = new AnchorObject(By.XPath("//div[@id='navprincipal']/ul/li/a[contains(text(),'Contacto')]"));
+        }
+        public void CloseBrowser()
+        {
+            Browser.CloseBrowser();
         }
     }
 }

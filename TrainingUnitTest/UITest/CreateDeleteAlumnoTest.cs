@@ -16,7 +16,7 @@ namespace TrainingUnitTest.UITest
         [TestCategory("Alumno")]
         public void Test1_VerificarLabelsFormulario() {
             //Arrange
-            MapperWeb.LaunchBrowser(MapperWeb.CreateAlumno.URL);
+            MapperWeb.LaunchBrowser(MapperWeb.AlumnoPage.CreateURL);
 
             List<string> formLabelsExpected = new List<string> {
                 "Nombre", "ApellidoPaterno", "ApellidoMaterno", "Genero","CI",
@@ -25,55 +25,43 @@ namespace TrainingUnitTest.UITest
             };
 
             //Assert
-            Assert.IsTrue(MapperWeb.CreateAlumno.GetformLabelsValueToList().SequenceEqual(formLabelsExpected), "Los labels del formulario no son los esperados o ocurrio algun error");
-            MapperWeb.IndexAlumno.CloseBrowser();
+            Assert.IsTrue(MapperWeb.AlumnoPage.GetformLabelsValueToList().SequenceEqual(formLabelsExpected), "Los labels del formulario no son los esperados o ocurrio algun error");
+            MapperWeb.AlumnoPage.CloseBrowser();
         }
         [TestMethod]
         [TestCategory("Alumno")]
         public void Test2_VerificarInputsFormulario()
         {
-            MapperWeb.LaunchBrowser(MapperWeb.CreateAlumno.URL);
+            MapperWeb.LaunchBrowser(MapperWeb.AlumnoPage.CreateURL);
             //Assert
-            Assert.IsTrue(MapperWeb.CreateAlumno.AreAllInputVisible(), "Hay algun input que no se esta visualizando.");
-            MapperWeb.IndexAlumno.CloseBrowser();
+            Assert.IsTrue(MapperWeb.AlumnoPage.AreAllInputVisible(), "Hay algun input que no se esta visualizando.");
+            MapperWeb.AlumnoPage.CloseBrowser();
         }
         [TestMethod]
         [TestCategory("Alumno")]
         public void Test3_InsertarAlumno_CamposRequeridos()
         {
             //Arrange
-            string expectedURL = MapperWeb.IndexAlumno.URL;
+            string expectedURL = MapperWeb.AlumnoPage.IndexURL;
 
-            MapperWeb.LaunchBrowser(MapperWeb.CreateAlumno.URL);
+            MapperWeb.LaunchBrowser(MapperWeb.AlumnoPage.CreateURL);
 
             //Registrar Alumno
-            MapperWeb.CreateAlumno.NombreInput.SetText(nombreAlumno);
-            MapperWeb.CreateAlumno.FechaNacimientoInput.SetText("12/10/2002");                        
-            MapperWeb.CreateAlumno.FotoInput.SetText(@"C:\Users\FABIOPC\Documents\Visual Studio 2019\Proyectos\AppRegistroEstudiantes\AppRegistroEstudiantes\Content\Images\ProfileTest.png");
-            MapperWeb.CreateAlumno.GuardarButton.Click();
+            MapperWeb.AlumnoPage.NombreInput.SetText(nombreAlumno);
+            MapperWeb.AlumnoPage.CIInput.SetText("1212121");
+            MapperWeb.AlumnoPage.FechaNacimientoInput.SetText("12/10/2002");                        
+            MapperWeb.AlumnoPage.FotoInput.SetText(@"C:\Users\FABIOPC\Documents\Visual Studio 2019\Proyectos\AppRegistroEstudiantes\AppRegistroEstudiantes\Content\Images\ProfileTest.png");
+            MapperWeb.AlumnoPage.GuardarButton.Click();
 
             //Assert
             Assert.AreEqual(expectedURL, MapperWeb.GetCurrentUrl(), "Error al registrar datos minimos de un Alumno");
-            MapperWeb.IndexAlumno.CloseBrowser();
-        }
-        [TestMethod]
-        [TestCategory("Alumno")]
-        public void Test4_VerificarAlumnoInsertado_CamposRequeridos()
-        {
-            MapperWeb.LaunchBrowser(MapperWeb.IndexAlumno.URL);                        
-            Assert.IsTrue(MapperWeb.IndexAlumno.ExistRowInTable(nombreAlumno), "No se encontro el Alumno que se creo.");
-            MapperWeb.IndexAlumno.CloseBrowser();
-        }
-        [TestMethod]
-        [TestCategory("Alumno")]
-        public void Test5_EliminarAlumnoInsertado_CamposRequeridos() 
-        {
-            MapperWeb.LaunchBrowser(MapperWeb.IndexAlumno.URL);
-            MapperWeb.IndexAlumno.GetEliminarButtonInRow(nombreAlumno).Click();
-            MapperWeb.DeleteAlumno.EliminarButton.Click();
-            //Assert
-            Assert.AreEqual(MapperWeb.IndexAlumno.URL, MapperWeb.GetCurrentUrl(), "Error al redirigir a la interfaz de listar alumnos");
-            MapperWeb.IndexAlumno.CloseBrowser();
+            Assert.IsTrue(MapperWeb.AlumnoPage.ExistRowInTable(nombreAlumno), "No se encontro el Alumno que se creo.");
+
+            MapperWeb.AlumnoPage.GetEliminarButtonInRow(nombreAlumno).Click();
+            MapperWeb.AlumnoPage.EliminarButton.Click();
+            Assert.AreEqual(MapperWeb.AlumnoPage.IndexURL, MapperWeb.GetCurrentUrl(), "Error al redirigir a la interfaz de listar alumnos");
+
+            MapperWeb.AlumnoPage.CloseBrowser();
         }
     }
 }
