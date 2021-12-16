@@ -7,13 +7,13 @@
 @using (Html.BeginForm("Edit", "Alumno", FormMethod.Post, new { id = "formEditAlumno", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
+
+    <div class="form-horizontal" id="context">
         <h4>Editar Alumno</h4>
         <hr />
         <div class="card">
             <div class="card-header">
-                @Html.ActionLink("Volver Atrás", "Index", "Alumno", null, new { @class = "btn btn-secondary" })
+                @Html.ActionLink("Volver Atrás", "Index", "Alumno", null, new { @class = "btn btn-secondary mr-1" })
                 <input id="btnActualizar" type="submit" value="Actualizar" class="btn btn-primary" />
             </div>
             <div class="card-body">
@@ -79,12 +79,18 @@
                     <div class="form-group col-md-2">
                         @Html.LabelFor(model => model.Foto, htmlAttributes: new { @class = "control-label" })
                         <div class="col-md-12 px-0">
-                            <img src="/Content/Images/@Model.Foto" class="col-md-12 px-0" />
+                            <img :src="cvImg" class="col-md-12 px-0" />
                             <label class="btn btn-block btn-secondary mt-3">
-                                <input id="FotoUpdated" name="FotoUpdated" type="file" class="d-none" accept="image/png, image/jpeg" />Subir Foto
+                                <input id="FotoUpdated"
+                                       name="FotoUpdated"
+                                       type="file"
+                                       class="d-none"
+                                       accept="image/png, image/jpeg"
+                                       @@change="handleFoto"
+                                 />Subir Foto
                             </label>
                         </div>
-                        
+
                         @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group col-md-3">
@@ -110,4 +116,24 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script type="text/javascript">
+        Vue.createApp({
+            setup() {
+                const cvImg = Vue.ref(`/Content/Images/${@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Foto))}`);
+
+                function handleFoto(event) {
+                    const img = new Image();
+                    const [FIRST_ITEM] = event.target.files;
+                    if (FIRST_ITEM !== undefined) {
+                        img.src = URL.createObjectURL(FIRST_ITEM);
+                        img.onload = () => { cvImg.value = img.src; };
+                    }
+                }
+                return {
+                    cvImg,
+                    handleFoto,
+                };
+            }
+        }).mount('#context');
+</script>
 }
